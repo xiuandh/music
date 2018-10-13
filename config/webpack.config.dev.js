@@ -15,6 +15,7 @@ const ManifestPlugin = require('webpack-manifest-plugin');
 const getCacheIdentifier = require('react-dev-utils/getCacheIdentifier');
 const ModuleNotFoundPlugin = require('react-dev-utils/ModuleNotFoundPlugin');
 
+
 // Webpack uses `publicPath` to determine where the app is being served from.
 // In development, we always serve from the root. This makes config easier.
 const publicPath = '/';
@@ -212,6 +213,8 @@ module.exports = {
               ),
               
               plugins: [
+                // .babelrc or babel-loader option
+                // ['import', { librayName: 'antd-mobile',style: 'css' }],
                 [
                   require.resolve('babel-plugin-named-asset-import'),
                   {
@@ -222,7 +225,11 @@ module.exports = {
                     },
                   },
                 ],
+                
+                
               ],
+              
+              
               // This is a feature of `babel-loader` for webpack (not Babel itself).
               // It enables caching results in ./node_modules/.cache/babel-loader/
               // directory for faster rebuilds.
