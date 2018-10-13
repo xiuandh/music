@@ -9,6 +9,19 @@
     color:#fff;
 }
 
+// NavTop中的Drawer
+.my-drawer .am-drawer-sidebar .am-list {
+    width:200px;
+    padding:0;
+    .nav-icon-group{
+        padding:10% 5%;
+        display: flex;
+        flex: 1;
+        justify-content: space-between;
+        align-items: center;
+    }
+}
+
 //NavTop
 .am-navbar-title{
     flex:2;
@@ -16,6 +29,7 @@
         display:flex;
         flex:1;
         justify-content: space-around;
+        a{color:#ddd;}
     }
 }
 
@@ -93,6 +107,31 @@
                 margin-right:10%;
             }
         }
+    }
+}
+
+// friend
+.friend{
+    .am-list-thumb{
+        position:relative;
+        top:-90px;
+        .icon-group{
+            display: flex;
+            flex: 1;
+            justify-content: space-between;
+            align-items: center;
+            i{
+                margin-right:14%;
+            }
+        }
+    }
+}
+
+
+// search
+.search{
+    .am-input-label.am-input-label-5{
+        width:50px;
     }
 }
 

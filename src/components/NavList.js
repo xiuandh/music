@@ -1,8 +1,12 @@
 import React,{Component} from "react"
 import { Tabs } from 'antd-mobile'
-import 'antd-mobile/dist/antd-mobile.css'
+// import 'antd-mobile/dist/antd-mobile.css'
 
-// import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import Carousel from './Carousel'
+import SongsNav from './home'
+import SongsTable from './Table'
+import SongsList from './List'
+import Friend from './Frinends'
 
 class Navtest extends Component{
     constructor(){
@@ -28,11 +32,20 @@ class Navtest extends Component{
     render(){
         return <div className="list-group">
             <Tabs tabs={this.state.tabs}>
-               {
-                   this.state.tabs.map((item)=>{
-                       return <div key={item.id}><h4>{item.title}</h4></div>
-                   })
-               }
+               <div>
+                    <Carousel/>
+                    <SongsNav/>
+                    <SongsTable/>
+                </div>
+                <div>
+                    <Friend/>
+                </div>
+                <div>
+                    <Carousel/>
+                    <SongsNav/>
+                    <SongsList/>
+                    <SongsTable/>
+                </div>
             </Tabs>
         </div>
     }

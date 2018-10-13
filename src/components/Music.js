@@ -39,6 +39,20 @@ class Music extends Component{
             console.log(res)
         })
     }
+    handerPlay(){
+        let audio = document.getElementById('audio');
+        if(audio !== null){
+            //检测播放是否已暂停,audio.paused 在播放器播放时返回false
+            alert(audio.paused);
+            if(audio.paused){
+                audio.play();
+            }else{
+                audio.pause();
+            }
+        }
+        // 重新播放
+        // audio.currentTime = 0;
+    }
     render() {
         let index = 0;
         let data = this.state.songs[index];
@@ -54,9 +68,9 @@ class Music extends Component{
                     </div>
                     <div className="button">
                     <p>
-                        <i className="fa fa-play-circle">
+                        <i className="fa fa-play-circle" onClick={this.handerPlay.bind(this)}>
                             {/* controls="controls" */}
-                            <audio src='./test.mp3'  preload="auto"/>
+                            <audio src='./test.mp3'  preload="auto" id="audio"/>
                         </i>
                         <i className="fa fa-list-ul"></i>
                     </p>    
