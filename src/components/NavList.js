@@ -2,15 +2,20 @@ import React,{Component} from "react"
 import { Tabs } from 'antd-mobile'
 // import 'antd-mobile/dist/antd-mobile.css'
 
+// import { Route,Switch,withRouter } from 'react-router-dom'
+
 import Carousel from './Carousel'
-import SongsNav from './home'
+import SongsNav from './Scrice'
 import SongsTable from './Table'
 import SongsList from './List'
 import Friend from './Frinends'
 
+import Cloud from './Cloud/Cloud'
+
 class Navtest extends Component{
-    constructor(){
-        super();
+    constructor(props){
+        super(props);
+        // let url = props.match.url;
         this.state ={
             tabs: [
                 {
@@ -29,13 +34,18 @@ class Navtest extends Component{
             ]
         }
     }
+    // handerTest(a,b){
+    //     console.log(a);
+    //     console.log(b);
+    //     let { history } = this.props;
+    //     history.push({pathname:a.name})
+    // }
     render(){
         return <div className="list-group">
-            <Tabs tabs={this.state.tabs}>
+            {/* onChange={this.handerTest.bind(this)} */}
+            <Tabs tabs={this.state.tabs} >
                <div>
-                    <Carousel/>
-                    <SongsNav/>
-                    <SongsTable/>
+                    <Cloud/>
                 </div>
                 <div>
                     <Friend/>
@@ -47,8 +57,15 @@ class Navtest extends Component{
                     <SongsTable/>
                 </div>
             </Tabs>
+            {/* <Switch>
+                <Route path={this.props.match.path+"/recommed"} component={Cloud} exact/>
+                <Route path={this.props.match.path+"/friends"} component={Friend} exact/>                
+                <Route path={this.props.match.path+"/radio"} component={Cloud} exact/>
+            </Switch> */}
         </div>
     }
 }
+
+// Navtest = withRouter(Navtest);
 
 export default Navtest;

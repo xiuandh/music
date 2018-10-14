@@ -115,14 +115,14 @@
     .am-list-thumb{
         position:relative;
         top:-90px;
-        .icon-group{
-            display: flex;
-            flex: 1;
-            justify-content: space-between;
-            align-items: center;
-            i{
-                margin-right:14%;
-            }
+    }
+    .icon-group{
+        display: flex;
+        flex: 1;
+        justify-content: space-between;
+        align-items: center;
+        i{
+            margin-right:14%;
         }
     }
 }
