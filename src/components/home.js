@@ -89,6 +89,7 @@ constructor(props){
         </List.Item.Brief>
     </List>)
     return (<div className="app-top">
+    <div id="header">
       <NavBar 
         leftContent={[
           <i className="fa fa-bars"/>,
@@ -114,21 +115,26 @@ constructor(props){
         </ul>
 
       </NavBar>
-      <Music/>
+      </div>
       <Drawer
         className="my-drawer"
         style={{ minHeight: document.documentElement.clientHeight ,display:this.state.toggle}}//控制遮层罩
         enableDragHandle
+        touch={false}
         contentStyle={{ color: '#A6A6A6', textAlign: 'center', paddingTop: 42 }}
         sidebar={sidebar}
         open={this.state.open}
         onOpenChange={this.onOpenChange}
       />
       <Switch>
+        <Route path={this.props.match.path} component={Cloud} exact/>
         <Route path={this.props.match.path+"/person"} component={Person} exact/>
         <Route path={this.props.match.path+"/cloud"} component={Cloud} exact/>
         <Route path={this.props.match.path+"/broadcasting"} component={Broad} exact/>
       </Switch>
+      {/* <div id="footer">
+        <Music/>
+      </div> */}
     </div>);
   }
 }

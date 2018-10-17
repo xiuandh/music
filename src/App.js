@@ -10,17 +10,18 @@ import './sass/common.scss'
 import Login from './components/Login'
 import Home from './components/home'
 import Search from './components/Search'
-import Cloud from './components/NavList'
+import Music from './components/Music'
 class App extends Component {
   render() {
     return <div className="App">
             <Switch>
-              <Route path="/home" component={Home}>
-                {/* <IndexRoute path="/cloud" component={Cloud}/> */}
-              </Route>
+              <Route path="/home" component={Home} />
               <Route path="/search" component={Search}/>
               <Route path="/" component={Login} exact/>
             </Switch>
+
+            <Music/>
+            
       </div>
   }
 }

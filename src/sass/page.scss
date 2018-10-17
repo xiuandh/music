@@ -8,6 +8,26 @@
 .am-tabs-default-bar-tab-active{
     color:#fff;
 }
+// NavList
+.am-tabs-default-bar{
+    z-index:0;
+}
+// .nav-list{
+    .am-tabs{
+        .am-tabs-tab-bar-wrap{
+            position: fixed;
+            right: 0;
+            top: 0.45rem;
+            left: 0;
+        }
+        .am-tabs-content-wrap{
+            margin-top:0.45rem;
+            z-index: -1;
+        }
+    }
+// }
+
+
 
 // NavTop中的Drawer
 .my-drawer .am-drawer-sidebar .am-list {
@@ -54,7 +74,19 @@
     }
 }
 
-// home
+// Scrice
+.scrice{
+    .am-tabs .am-tabs-tab-bar-wrap{
+        top:0;
+        position:relative;
+        right:0;
+        left:0;
+    }
+    .am-tabs-content-wrap{
+        margin-top:0;
+    }
+}
+
 .icondiv{
     width:20px;
     height:20px;
@@ -133,5 +165,46 @@
     .am-input-label.am-input-label-5{
         width:50px;
     }
+    .am-list-item.am-input-item{
+        background-color:$mainColor;
+    }
 }
 
+//home 总的一个布局
+.app-top{
+    display:flex;
+    flex-direction:column;
+    flex:1;
+    height:100%;
+    width:100%;
+    #header{
+        display:flex;
+        height:0.45rem;
+        position:relative;
+        z-index:1;
+        .am-navbar{
+            width:100%;
+            position:fixed;
+            left:0;right:0;
+            top:0;
+        }
+    }
+    #footer{
+        display:flex;
+        height:1rem;
+    }
+    #content{
+        display:flex;
+        flex:1;
+        overflow-x: hidden;
+        overflow-y:auto;
+        flex-direction: column;
+        .test{
+            background-color:black;
+        }
+    }
+}
+#footer{
+    display:flex;
+    height:1rem;
+}

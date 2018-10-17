@@ -41,7 +41,7 @@ class Login extends Component{
         history.push({pathname:path})
     }
     render(){
-        return <div>
+        return <div className="scrice">
             <WingBlank>
                 <div style={{margin:"10px"}}><img src="./favicon.ico"/></div>
                 <WhiteSpace/><Button>手机号登录</Button><WhiteSpace />

@@ -41,9 +41,10 @@ class Navtest extends Component{
     //     history.push({pathname:a.name})
     // }
     render(){
-        return <div className="list-group">
+        return <div id="content">
             {/* onChange={this.handerTest.bind(this)} */}
-            <Tabs tabs={this.state.tabs} >
+            <div className="nav-list">
+            <Tabs tabs={this.state.tabs} distanceToChangeTab={1}>
                <div>
                     <Cloud/>
                 </div>
@@ -62,6 +63,7 @@ class Navtest extends Component{
                 <Route path={this.props.match.path+"/friends"} component={Friend} exact/>                
                 <Route path={this.props.match.path+"/radio"} component={Cloud} exact/>
             </Switch> */}
+        </div>
         </div>
     }
 }

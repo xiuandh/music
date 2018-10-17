@@ -1,5 +1,5 @@
 import React,{  Component} from 'react'
-
+import { withRouter } from 'react-router-dom'
 import { List } from 'antd-mobile'
 import 'antd-mobile/dist/antd-mobile.css'
 
@@ -10,6 +10,7 @@ class Music extends Component{
     constructor() {
         super();
         this.state = {
+            show:true,
             songs:[ 
                 {
                     img: 'https://zos.alipayobjects.com/rmsportal/dKbkpPXKfvZzWCM.png',
@@ -31,6 +32,14 @@ class Music extends Component{
         }
     }
     componentDidMount(){
+        let path = this.props.location.pathname;
+        console.log(path == '/search');
+        if(path === '/search' || path === "/"){
+            console.log('66666');
+            this.setState({show:false})
+        }else{
+            this.setState({show:true})
+        }
         axios.get('/api/rank/list',{
             params:{
                 json:true
@@ -43,7 +52,7 @@ class Music extends Component{
         let audio = document.getElementById('audio');
         if(audio !== null){
             //检测播放是否已暂停,audio.paused 在播放器播放时返回false
-            alert(audio.paused);
+            // alert(audio.paused);
             if(audio.paused){
                 audio.play();
             }else{
@@ -53,10 +62,23 @@ class Music extends Component{
         // 重新播放
         // audio.currentTime = 0;
     }
+    componentWillUpdate(nextProps,nextState){
+        console.log(nextProps)
+        console.log(nextState)
+        console.log(this)
+        // let path = this.props.location.pathname;
+        // if(path == '/search' || path =="/"){
+        //     console.log('change');
+        //     this.setState({show:false})
+        // }else{
+        //     this.setState({show:true})
+        // }
+    }
     render() {
         let index = 0;
         let data = this.state.songs[index];
-        return <div className="music">
+        return <div id="footer" style={this.state.show ? {display:'block'}:{display:'none'}}>
+            <div className="music" >
             <List>
                 <List.Item 
                     key={index}
@@ -78,7 +100,8 @@ class Music extends Component{
                 </List.Item>
             </List>
         </div>
+        </div>
     }
 }
-
+Music = withRouter(Music);
 export default Music;

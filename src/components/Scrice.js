@@ -33,7 +33,7 @@ class Main extends Component{
         }
     }
     render(){
-        return <div>
+        return <div className="scrice">
             <TabBar tintColor="#58bc58">
             {
                 this.state.nav.map(tab=>{
