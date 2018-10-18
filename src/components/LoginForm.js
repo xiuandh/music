@@ -1,6 +1,7 @@
 import React,{ Component } from 'react'
 import { List,InputItem,Button,WhiteSpace,WingBlank } from 'antd-mobile'
 
+
 class LoginForm extends Component{
     componentDidMount(){
         this.inputRef.focus();

@@ -2,9 +2,9 @@ import React, { Component } from 'react'
 
 import { Button,WingBlank,WhiteSpace,TabBar } from 'antd-mobile'
 
-import { withRouter,Switch,Route } from 'react-router-dom'
-
-import Home from "./home"
+import { withRouter } from 'react-router-dom'
+import { connect } from 'react-redux'
+import musicAction from '../action'
 
 class Login extends Component{
     constructor(){
@@ -40,6 +40,13 @@ class Login extends Component{
         let { history } = this.props;
         history.push({pathname:path})
     }
+    componentWillMount(){
+        this.props.changeOriginState(false);//false
+    }
+    componentWillUnmount(){
+        console.log("hhhh")
+        this.props.changeOriginState(true);//true
+    }
     render(){
         return <div className="scrice">
             <WingBlank>
@@ -71,5 +78,19 @@ class Login extends Component{
         </div>
     }
 }
+let mapStateToProps = function(state){
+    return {
+        music:state.musicReducer.showPlayer
+    }
+}
+let mapDispatchToProps = function(dispatch){
+    return{
+        changeOriginState: (state)=>{
+            dispatch(musicAction(state))
+        }
+    }
+}
+Login = connect(mapStateToProps,mapDispatchToProps)(Login)
+
 Login = withRouter(Login)
 export default Login;

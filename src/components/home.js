@@ -1,6 +1,12 @@
 import React,{Component} from "react"
 
-import { Route,withRouter,NavLink,Switch,Redirect } from 'react-router-dom'
+import { Route,withRouter,NavLink,Switch } from 'react-router-dom'
+
+import { connect } from 'react-redux'
+
+// import { changeMusicState } from '../action'
+
+import playAction from '../action'
 
 import { Drawer, List, NavBar } from 'antd-mobile';
 
@@ -9,7 +15,6 @@ import '../sass/page.scss'
 import Person from './TopMusic'
 import Cloud from './NavList'
 import Broad from './NavList'
-import Music from './Music'
 
 const allComponents = {
   Person,
@@ -59,7 +64,14 @@ constructor(props){
     // console.log(this.state.open)
 
   }
+  componentDidMount(){
+    console.log(this.props)
+      // this.props.changeMusic();
+
+  }
   componentWillUpdate(a,b){
+    console.log(this.props)
+    this.props.changeMusic()
     if(this.state.open===true){
       this.setState({ toggle:'none'});
     }
@@ -70,6 +82,7 @@ constructor(props){
     history.push( {pathname:path} )
   }
   render() {
+    console.log(this.props)
     const sidebar = (<List>
         {
             this.state.side.map((bar,idx)=>{
@@ -94,6 +107,7 @@ constructor(props){
         leftContent={[
           <i className="fa fa-bars"/>,
         ]}
+
         rightContent={[
           // <i className="fa fa-search" onClick={this.handlerSearch.bind(this,this.state.search)}/>
           <NavLink to="/search" style={{color:"#ddd"}}><i className="fa fa-search"></i></NavLink>
@@ -138,5 +152,20 @@ constructor(props){
     </div>);
   }
 }
+let mapStateToProps = function(state){
+  console.log('home',state)
+  return {
+    music: state.musicReducer.showPlayer
+  }
+}
+let mapDispatchToProps = function(dispatch){
+  return {
+    changeMusic:()=>{
+      dispatch(playAction(true));
+    }
+  }
+}
+Navtest = connect(mapStateToProps,mapDispatchToProps)(Navtest)
+
 Navtest = withRouter(Navtest);
 export default Navtest;

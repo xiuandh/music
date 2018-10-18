@@ -21,6 +21,10 @@ class App extends Component {
             </Switch>
 
             <Music/>
+            {/* <Switch>
+              <Route path="/home" component={Music}/>
+              <Route path="/list" component={Music}/>
+            </Switch> */}
             
       </div>
   }

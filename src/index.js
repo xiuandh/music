@@ -4,12 +4,22 @@ import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 
-import { HashRouter as Router,Route } from "react-router-dom"
+import { HashRouter as Router } from "react-router-dom"
+
+import { Provider } from 'react-redux'
+import store from './store'
+console.log('start',store.getState())
+// 监听数据的修改
+store.subscribe(()=>{
+    console.log(123,store.getState());
+})
 
 ReactDOM.render(
-    <Router>
-        <App />
-    </Router>,
+    <Provider store={store}>
+        <Router>
+            <App />
+        </Router>
+    </Provider>,
     
     document.getElementById('root')
 );

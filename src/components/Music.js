@@ -1,5 +1,8 @@
 import React,{  Component} from 'react'
 import { withRouter } from 'react-router-dom'
+
+import { connect } from 'react-redux'
+
 import { List } from 'antd-mobile'
 import 'antd-mobile/dist/antd-mobile.css'
 
@@ -33,9 +36,9 @@ class Music extends Component{
     }
     componentDidMount(){
         let path = this.props.location.pathname;
-        console.log(path == '/search');
+        // console.log(path == '/search');
         if(path === '/search' || path === "/"){
-            console.log('66666');
+            // console.log('66666');
             this.setState({show:false})
         }else{
             this.setState({show:true})
@@ -62,22 +65,12 @@ class Music extends Component{
         // 重新播放
         // audio.currentTime = 0;
     }
-    componentWillUpdate(nextProps,nextState){
-        console.log(nextProps)
-        console.log(nextState)
-        console.log(this)
-        // let path = this.props.location.pathname;
-        // if(path == '/search' || path =="/"){
-        //     console.log('change');
-        //     this.setState({show:false})
-        // }else{
-        //     this.setState({show:true})
-        // }
-    }
+    
     render() {
         let index = 0;
         let data = this.state.songs[index];
-        return <div id="footer" style={this.state.show ? {display:'block'}:{display:'none'}}>
+        console.log(this.props)
+        return <div id="footer" style={this.props.music ? {display:'block'}:{display:'none'}}>
             <div className="music" >
             <List>
                 <List.Item 
@@ -103,5 +96,12 @@ class Music extends Component{
         </div>
     }
 }
+let mapStateToProps = function(state){
+    return {
+      music: state.musicReducer.showPlayer
+    }
+  }
+Music = connect(mapStateToProps)(Music)
+
 Music = withRouter(Music);
 export default Music;
