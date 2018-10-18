@@ -76,6 +76,7 @@
 
 // Scrice
 .scrice{
+
     .am-tabs .am-tabs-tab-bar-wrap{
         top:0;
         position:relative;
@@ -84,23 +85,19 @@
     }
     .am-tabs-content-wrap{
         margin-top:0;
+        
     }
-}
-
-.icondiv{
-    width:20px;
-    height:20px;
-    border-radius:50%;
-    background-color:#f00;
-    i{
-        color:#fff;
+    svg{
+        width:20px;
+        height:16px;
+        color:#f00;
     }
 }
 
 //Table
 .table{
     padding:0 10px;
-    h4{text-align:left;}
+    h4{text-align:left;font-size:0.16rem;}
     .tableBox{
         display:flex;
         justify-content: space-between;
@@ -111,6 +108,7 @@
             flex-direction: column;
             // flex:1/3;
             img{width:100%;}
+            p{font-size:0.16rem;}
         }
     }
 }
@@ -135,7 +133,7 @@
             display:flex;
             flex-direction: column;
             justify-content:center;
-            i{
+            svg{
                 margin-right:10%;
             }
         }
@@ -148,12 +146,23 @@
         position:relative;
         top:-90px;
     }
+    .am-list-item {
+        .am-list-thumb{
+            position:relative;
+            top:-90px;
+        }
+        .am-list-line{
+            video{
+                width:100%;
+            }
+        }
+    }
     .icon-group{
         display: flex;
         flex: 1;
         justify-content: space-between;
         align-items: center;
-        i{
+        svg{
             margin-right:14%;
         }
     }
@@ -199,12 +208,22 @@
         overflow-x: hidden;
         overflow-y:auto;
         flex-direction: column;
-        .test{
-            background-color:black;
-        }
     }
 }
 #footer{
     display:flex;
     height:1rem;
 }
+
+// login
+.fontsize{
+    font-size:0.16rem;
+}
+// topmusic
+.topmusic,.login{
+    svg{
+        width:20px;
+        height:16px;
+    }
+}
+

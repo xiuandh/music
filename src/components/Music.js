@@ -5,6 +5,8 @@ import { connect } from 'react-redux'
 
 import { List } from 'antd-mobile'
 import 'antd-mobile/dist/antd-mobile.css'
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+
 
 import axios from 'axios'
 
@@ -83,11 +85,11 @@ class Music extends Component{
                     </div>
                     <div className="button">
                     <p>
-                        <i className="fa fa-play-circle" onClick={this.handerPlay.bind(this)}>
+                        <FontAwesomeIcon icon="play-circle" onClick={this.handerPlay.bind(this)}>
                             {/* controls="controls" */}
                             <audio src='./test.mp3'  preload="auto" id="audio"/>
-                        </i>
-                        <i className="fa fa-list-ul"></i>
+                        </FontAwesomeIcon>
+                        <FontAwesomeIcon icon="list-ul" />
                     </p>    
                     </div>
                 </List.Item>

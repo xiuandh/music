@@ -6,6 +6,9 @@ import { withRouter } from 'react-router-dom'
 import { connect } from 'react-redux'
 import musicAction from '../action'
 
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+
+
 class Login extends Component{
     constructor(){
         super();
@@ -16,22 +19,22 @@ class Login extends Component{
                     id:1,
                     text:'私人FM',
                     name:'/recommend',
-                    icon:'fa fa-lastfm-square'
+                    icon:'clock'
                 },{
                     id:2,
                     text:'每日推荐',
                     name:'/friends',
-                    icon:'fa fa-calendar'
+                    icon:'calendar'
                 },{
                     id:3,
                     text:'歌单',
                     name:'/radio',
-                    icon:'fa fa-list-alt'
+                    icon:'list-alt'
                 },{
                     id:3,
                     text:'排行榜',
                     name:'/radio',
-                    icon:'fa fa-list-ol'
+                    icon:'list-ol'
                 }
             ]
         }
@@ -54,11 +57,11 @@ class Login extends Component{
                 <WhiteSpace/><Button>手机号登录</Button><WhiteSpace />
                 <WhiteSpace/><Button>注册</Button><WhiteSpace />
                 <div style={{margin:"10px"}}>
-                    <a onClick={this.handlerTolink.bind(this,this.state.link)} >短暂使用</a>
+                    <a className="fontsize" onClick={this.handlerTolink.bind(this,this.state.link)} >短暂使用</a>
                     
                 </div>
                 <div>
-                    <p>其他登录方法</p>
+                    <p className="fontsize">其他登录方法</p>
                 <TabBar tintColor="#58bc58">
                     {
                         this.state.nav.map(tab=>{
@@ -66,7 +69,7 @@ class Login extends Component{
                         title={tab.text} 
                         key={tab.id}
                         icon={
-                            <div className="icondiv"><i className={tab.icon}></i></div>
+                            <div className="icondiv"><FontAwesomeIcon icon={tab.icon}/></div>
                         }
                         />})
                     }

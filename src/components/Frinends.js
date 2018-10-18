@@ -4,6 +4,8 @@ import { List } from 'antd-mobile'
 import axios from 'axios'
 
 import '../sass/page.scss'
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+
 
 class Friends extends Component{
     constructor(){
@@ -11,11 +13,11 @@ class Friends extends Component{
         this.state = {
             Mvs:[
                 {
-                    icon:'fa fa-music',
+                    icon:'music',
                     name:'秀逗音乐',
                     time:'1539415611579',
                     content:'返还的话费德拉费好大劲法律和地方的，符合大富豪敌方雷达，很丰富哈佛合法化的发盒饭的饭。',
-                    mv:'./',
+                    mv:'./3theA.mp4',
                     like:'28',
                     comment:'2',
                 }
@@ -41,16 +43,16 @@ class Friends extends Component{
                     this.state.Mvs.map((item,idx)=>{
                         return <List.Item 
                                     key={idx}
-                                    thumb={<i className={item.icon}/>}
+                                    thumb={<FontAwesomeIcon icon={item.icon}/>}
                                 >
                                 <p>{item.name}发布视频</p>
                                 <video src={item.mv} controls="controls" preload="true"/>
                                 <List.Item.Brief>
                                     <ul className="icon-group">
-                                        <li><i className="fa fa-heart"/>{item.like}</li>
-                                        <li><i className="fa fa-comment"/>{item.comment}</li>
-                                        <li><i className="fa fa-share-alt"/>视频</li>
-                                        <li><i className="fa fa-ellipsis-v"/></li>
+                                        <li><FontAwesomeIcon icon="heart"/>{item.like}</li>
+                                        <li><FontAwesomeIcon icon="comment"/>{item.comment}</li>
+                                        <li><FontAwesomeIcon icon="share-alt"/>视频</li>
+                                        <li><FontAwesomeIcon icon="ellipsis-v"/></li>
                                     </ul>
                                 </List.Item.Brief>
                         </List.Item>

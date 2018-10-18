@@ -4,23 +4,14 @@ import { Route,withRouter,NavLink,Switch } from 'react-router-dom'
 
 import { connect } from 'react-redux'
 
-// import { changeMusicState } from '../action'
-
 import playAction from '../action'
-
-import { Drawer, List, NavBar } from 'antd-mobile';
-
 import '../sass/page.scss'
 
 import Person from './TopMusic'
 import Cloud from './NavList'
 import Broad from './NavList'
-
-const allComponents = {
-  Person,
-  Cloud,
-  Broad,
-}
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { Drawer, List, NavBar } from 'antd-mobile';
 
 class Navtest extends Component {
 constructor(props){
@@ -32,27 +23,27 @@ constructor(props){
     icons:[
         {
           id:1,
-          icon:'fa fa-music',
+          icon:'music',
           path:url + '/person',
           name:'Person'
       },{
           id:2,
-          icon:'fa fa-cloud',
+          icon:'cloud',
           path:url + '/cloud',
           name:'Cloud'
       },{
           id:3,
-          icon:'fa fa-play-circle',
+          icon:'play-circle',
           path:url + '/broadcasting',
           name:'Broad'
       }
     ],
     side:[
-        {text:'本地音乐',icon:'fa fa-music'},
-        {text:'最近播放',icon:'fa fa-play-circle'},
-        {text:'下载管理',icon:'fa fa-download'},
-        {text:'我的电台',icon:'fa fa-headphones'},
-        {text:'我的收藏',icon:'fa fa-gratipay'}
+        {text:'本地音乐',icon:'music'},
+        {text:'最近播放',icon:'play-circle'},
+        {text:'下载管理',icon:'download'},
+        {text:'我的电台',icon:'headphones'},
+        {text:'我的收藏',icon:'heart'}
     ],
     search:'search'
   }
@@ -87,7 +78,7 @@ constructor(props){
         {
             this.state.side.map((bar,idx)=>{
                 return (
-                    <List.Item key={idx} multipleLine thumb={<i className={bar.icon}></i>}>
+                    <List.Item key={idx} multipleLine thumb={<FontAwesomeIcon icon={bar.icon} />}>
                         {bar.text}
                     </List.Item>
                 )
@@ -95,9 +86,9 @@ constructor(props){
         }
         <List.Item.Brief>
         <ul className="nav-icon-group">
-            <li><i className="fa fa-eye"/>夜间模式</li>
-            <li><i className="fa fa-cog"/>设置</li>
-            <li><i className="fa fa-times-circle"/>退出</li>
+            <li><FontAwesomeIcon icon="eye"/>夜间模式</li>
+            <li><FontAwesomeIcon icon="cog"/>设置</li>
+            <li><FontAwesomeIcon icon="power-off"/>退出</li>
         </ul>
         </List.Item.Brief>
     </List>)
@@ -105,23 +96,21 @@ constructor(props){
     <div id="header">
       <NavBar 
         leftContent={[
-          <i className="fa fa-bars"/>,
+          <FontAwesomeIcon icon="bars"/>
         ]}
 
         rightContent={[
           // <i className="fa fa-search" onClick={this.handlerSearch.bind(this,this.state.search)}/>
-          <NavLink to="/search" style={{color:"#ddd"}}><i className="fa fa-search"></i></NavLink>
+          <NavLink to="/search" style={{color:"#ddd"}}><FontAwesomeIcon icon="search"/></NavLink>
         ]}
         onLeftClick={this.onOpenChange}
       >
         <ul className="navTop">
           {
             this.state.icons.map((item,index)=>{
-              // <Switch>
-              //     <Route path={item.path} component={allComponents[item.name]}/>
-              // </Switch>
               return <li key={index}>
-                <NavLink to={item.path}><i className={item.icon} /></NavLink>
+              {/* <i className={item.icon} /> */}
+                <NavLink to={item.path}><FontAwesomeIcon icon={item.icon} /></NavLink>
               </li>
             })
           }
@@ -146,9 +135,6 @@ constructor(props){
         <Route path={this.props.match.path+"/cloud"} component={Cloud} exact/>
         <Route path={this.props.match.path+"/broadcasting"} component={Broad} exact/>
       </Switch>
-      {/* <div id="footer">
-        <Music/>
-      </div> */}
     </div>);
   }
 }

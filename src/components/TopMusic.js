@@ -4,33 +4,37 @@ import '../sass/page.scss'
 
 import { List } from 'antd-mobile';
 import 'antd-mobile/dist/antd-mobile'
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+
 
 class TopMusic extends Component {
     constructor(){
     super();
     this.state ={
         side:[
-            {text:'本地音乐',icon:'fa fa-music'},
-            {text:'最近播放',icon:'fa fa-play-circle'},
-            {text:'下载管理',icon:'fa fa-download'},
-            {text:'我的电台',icon:'fa fa-headphones'},
-            {text:'我的收藏',icon:'fa fa-gratipay'}
+            {text:'本地音乐',icon:'music'},
+            {text:'最近播放',icon:'play-circle'},
+            {text:'下载管理',icon:'download'},
+            {text:'我的电台',icon:'headphones'},
+            {text:'我的收藏',icon:'heart'}
         ]
     }
     }
   render() {
-    return <div>
+    return <div id="content">
+    <div className="topmusic">
         <List>
             {
                 this.state.side.map((bar,idx)=>{
                     return (
-                        <List.Item key={idx} multipleLine thumb={<i className={bar.icon}></i>}>
+                        <List.Item key={idx}  thumb={<FontAwesomeIcon icon={bar.icon}/>}>
                             {bar.text}
                         </List.Item>
                     )
                 })
             }
         </List>
+    </div>
     </div>
   }
 }
